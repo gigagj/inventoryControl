@@ -24,9 +24,7 @@ public class DbConnection {
 
 
     }
-    public static void main(String args[]) throws SQLException, ClassNotFoundException {
-       openConnection();
-    }
+
     public static Connection getConnection(){
        return con;
     }
