@@ -4,6 +4,7 @@ package inventory;
  */
 
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -13,7 +14,7 @@ import java.io.IOException;
 
 public class Main extends Application {
     private Stage primaryStage;
-    private BorderPane mainLayout;
+    private static BorderPane mainLayout;
 
     public static void main(String[] args) {
         launch(args);
@@ -24,6 +25,7 @@ public class Main extends Application {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Inventory Control System");
         showMainView();
+        showMainItems();
 
     }
 
@@ -36,5 +38,19 @@ public class Main extends Application {
         primaryStage.show();
 
 
+    }
+
+    public static void showMainItems() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(Main.class.getResource("view/MainItems.fxml"));
+        BorderPane mainItem = loader.load();
+        mainLayout.setCenter(mainItem);
+    }
+
+    public static void showStock() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(Main.class.getResource("stock/StockView.fxml"));
+        BorderPane stockPane = loader.load();
+        mainLayout.setCenter(stockPane);
     }
 }
