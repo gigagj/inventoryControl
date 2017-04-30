@@ -11,7 +11,7 @@ public class DbConnection {
 
    public static void openConnection() throws ClassNotFoundException, SQLException {
 
-       String dbURL = "jdbc:sqlserver://localhost;integratedSecurity=true;";
+       String dbURL = "jdbc:sqlserver://localhost;databaseName=inventory;integratedSecurity=true;";
 
        try {
            DriverManager.registerDriver(new com.microsoft.sqlserver.jdbc.SQLServerDriver() );
@@ -28,4 +28,5 @@ public class DbConnection {
     public static Connection getConnection(){
        return con;
     }
+    public static void closeConnection() throws SQLException { con.close();}
 }
