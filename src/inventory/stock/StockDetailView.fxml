@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="inventory.stock.StockDetailViewController">
+   <center>
+      <TableView fx:id="stockTbl" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="itemCodeCol" prefWidth="102.0" text="Item Code" />
+            <TableColumn fx:id="itemName" prefWidth="120.0" text="Name" />
+          <TableColumn fx:id="itemQtyCol" prefWidth="79.0" text="Quantity" />
+            <TableColumn fx:id="itemROL" prefWidth="107.0" text="ReOrder Level" />
+            <TableColumn fx:id="itemPrice" prefWidth="95.0" text="Price" />
+        </columns>
+      </TableView>
+   </center>
+</BorderPane>
