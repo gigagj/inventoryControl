@@ -1,7 +1,7 @@
 package inventory.supplier;
 
 import inventory.Main;
-import inventory.stock.Stock;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
@@ -32,6 +32,8 @@ public class SupplierViewController {
     @FXML
     private TextField upSupCode;
 
+    @FXML
+    private TextField addSupCode;
 
     @FXML
     private TextField upSupAdd;
@@ -41,7 +43,7 @@ public class SupplierViewController {
 
     @FXML
     private void goSupplierDetails() throws IOException, SQLException, ClassNotFoundException {
-   //     main.showSupplierDetailsStage();
+       main.showSupplierDetailsStage();
 
     }
 
@@ -58,11 +60,12 @@ public class SupplierViewController {
             alert.show();
         }
         else {
-            int result = Stock.deleteStock(supCode.getText());
+            int result =0;
+                    result= Supplier.deleteSupplier(supCode.getText());
             supCode.clear();
             if (result == 1) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Delete Stock");
+                alert.setTitle("Delete Supplier");
                 alert.setHeaderText(null);
                 alert.setContentText("Supplier Successfully Deleted!");
                 alert.show();
@@ -127,9 +130,8 @@ public class SupplierViewController {
 
     @FXML
     private void doAddSupplier() throws SQLException, ClassNotFoundException {
-        int result=Supplier.addSupplier(supCode.getText(),supName.getText(),supAdd.getText(),Integer.parseInt(supCont.getText()));
-
-        String code = supCode.getText().trim();
+       int result=0;
+        String code = upSupAdd.getText().trim();
         String address = supAdd.getText().trim();
         String cont = supCont.getText().trim();
         String name = supName.getText().trim();
@@ -142,18 +144,20 @@ public class SupplierViewController {
             alert.setContentText("All Fields cannot be empty"); }
             
             else {
-                result = Supplier.addSupplier(supCode.getText(), supName.getText(), supAdd.getText(), Integer.parseInt(supCont.getText()));
+                result = Supplier.addSupplier(addSupCode.getText(), supName.getText(), supAdd.getText(), Integer.parseInt(supCont.getText()));
+
+                if (result == 1) {
+                    alert.setContentText("Operation Successful!");
+                } else {
+                    alert.setContentText("Operation Failed");
+                }
             }
         
 
-        if (result == 1) {
-            alert.setContentText("Operation Successful!");
-        } else {
-            alert.setContentText("Operation Failed");
-        }
+
 
         alert.show();
-        supCode.clear();
+        addSupCode.clear();
         supName.clear();
         supAdd.clear();
         supCont.clear();
