@@ -12,6 +12,24 @@ import java.sql.*;
  */
 public class Stock {
 
+    public static int addStock(String iCode,String name,int quantity,int rol,BigDecimal price) throws SQLException, ClassNotFoundException {
+        DbConnection.openConnection();
+        Connection con = DbConnection.getConnection();
+
+        PreparedStatement stmt = con.prepareStatement("insert into stock values (?,?,?,?,?)");
+
+        stmt.setString(1, iCode);
+        stmt.setString(2, name);
+        stmt.setInt(3, quantity);
+        stmt.setInt(4, rol);
+        stmt.setBigDecimal(5, price);
+
+        int result = stmt.executeUpdate();
+        DbConnection.closeConnection();
+
+        return result;
+    }
+
     public static ObservableList<StockDetail> getStock() throws SQLException, ClassNotFoundException {
         ObservableList<StockDetail> stock = FXCollections.observableArrayList();
 
