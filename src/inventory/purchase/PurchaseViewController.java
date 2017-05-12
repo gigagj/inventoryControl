@@ -58,21 +58,39 @@ public class PurchaseViewController implements Initializable {
 
     @FXML
     private void doAddDetail() throws SQLException, ClassNotFoundException {
-        int result;
-
-        result = Purchase.addPurchase(addCode.getText(), addSup.getText(), addDate.getValue(), Integer.parseInt(addQty.getText()));
+        int result = 0 ;
+        String code = addCode.getText().trim();
+        String supId = addSup.getText().trim();
+        String qty = addQty.getText().trim();
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Add Purchase");
         alert.setHeaderText(null);
+        Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
+        alert2.setTitle("Error");
+        alert2.setHeaderText(null);
 
-        if (result == 1) {
-            alert.setContentText("Operation Successful!");
-        } else {
-            alert.setContentText("Operation Failed");
+        if (code.isEmpty() || supId.isEmpty() || (addDate.getValue() == null) || qty.isEmpty()) {
+            alert.setContentText("All fields should be filled");
+        }
+        else {
+            try{
+                result = Purchase.addPurchase(code, supId, addDate.getValue(), Integer.parseInt(qty));
+            }
+            catch (NumberFormatException e1) {
+                alert2.setContentText(e1.getMessage()+"\nQuantity should be of type Integer");
+
+            }
+
+            if (result == 1) {
+                alert.setContentText("Operation Successful!");
+            } else {
+                alert.setContentText("Operation Failed");
+            }
         }
 
         alert.show();
+        alert2.show();
         addCode.clear();
         addSup.clear();
         addDate.setValue(null);
@@ -83,4 +101,4 @@ public class PurchaseViewController implements Initializable {
             e.printStackTrace();
         }
     }
-}
+    }
