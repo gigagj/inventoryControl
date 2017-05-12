@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="inventory.purchase.PurchaseViewController">
+   <center>
+      <TabPane prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+         <tabs>
+            <Tab text="Add Purchase">
+               <content>
+                  <VBox fillWidth="false" spacing="10.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="42.0" prefWidth="300.0" text="Add Purchase Details" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Label>
+                        <Separator prefWidth="300.0">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin></Separator>
+                        <TextField fx:id="addCode" alignment="CENTER" prefHeight="40.0" prefWidth="300.0" promptText="ITEM CODE">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="addSup" alignment="CENTER" prefHeight="40.0" prefWidth="300.0" promptText="SUPPLIER ID">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </TextField>
+                        <DatePicker fx:id="addDate" prefHeight="40.0" prefWidth="300.0">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </DatePicker>
+                        <TextField fx:id="addQty" alignment="CENTER" prefHeight="40.0" prefWidth="300.0" promptText="QUANTITY">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </TextField>
+                        <Button mnemonicParsing="false" onAction="#doAddDetail" prefHeight="42.0" prefWidth="300.0" text="Add Purchase">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets left="230.0" top="100.0" />
+                     </padding>
+                  </VBox>
+               </content>
+            </Tab>
+            <Tab text="View Purchase">
+               <content>
+                  <TableView fx:id="purTable">
+                     <columns>
+                        <TableColumn fx:id="itemCode" prefWidth="125.0" text="Item Code" />
+                        <TableColumn fx:id="supId" prefWidth="125.0" text="Supplier ID" />
+                        <TableColumn fx:id="purDate" prefWidth="230.0" text="Purchased Date" />
+                        <TableColumn fx:id="purQty" prefWidth="120.0" text="Quantity" />
+                     </columns>
+                  </TableView>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </center>
+</BorderPane>
