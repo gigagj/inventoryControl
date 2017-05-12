@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="inventory.supplier.SupplierDetailViewController">
+   <center>
+      <TableView fx:id="supplierTab" editable="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="supID" prefWidth="75.0" text="Supplier ID" />
+          <TableColumn fx:id="supName" prefWidth="109.0" text="Supplier Name" />
+            <TableColumn fx:id="supAdd" prefWidth="127.0" text="Supplier Address" />
+            <TableColumn fx:id="supCont" prefWidth="139.0" text="Supplier Contact#" />
+        </columns>
+      </TableView>
+   </center>
+</BorderPane>
