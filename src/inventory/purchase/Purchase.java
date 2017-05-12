@@ -4,6 +4,7 @@ import inventory.DbConnection;
 import inventory.stock.StockDetail;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
 
 import java.math.BigDecimal;
 import java.sql.*;
@@ -19,6 +20,8 @@ public class Purchase {
         DbConnection.openConnection();
         Connection con = DbConnection.getConnection();
 
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+
         PreparedStatement stmt = con.prepareStatement("insert into purchase values (?,?,?,?)");
         stmt.setString(1,itemCode);
         stmt.setString(2,supplierId);
@@ -29,7 +32,16 @@ public class Purchase {
         stmt2.setInt(1,quantity);
         stmt2.setString(2,itemCode);
 
-        int result = stmt.executeUpdate();
+        int result = 0;
+
+        try {
+             result = stmt.executeUpdate();
+        } catch (Exception e) {
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+        }
+
         int result2 = stmt2.executeUpdate();
 
         DbConnection.closeConnection();
