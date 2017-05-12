@@ -42,36 +42,65 @@ public class StockViewController {
 
     @FXML
     private void doDeleteStock() throws SQLException, ClassNotFoundException {
-        int result = Stock.deleteStock(codeColumn.getText());
-        codeColumn.clear();
-        if (result == 1) {
+        String s = codeColumn.getText();
+        s = s.trim();
+
+        if (s.isEmpty() ) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Delete Stock");
             alert.setHeaderText(null);
-            alert.setContentText("Item Successfully Deleted!");
+            alert.setContentText("Item Code Field Cannot be Empty!");
             alert.show();
-        } else {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Delete Stock");
-            alert.setHeaderText(null);
-            alert.setContentText("Deletion Failed! \n Item Not Found!");
-            alert.show();
+        }
+        else {
+            int result = Stock.deleteStock(codeColumn.getText());
+            codeColumn.clear();
+            if (result == 1) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Delete Stock");
+                alert.setHeaderText(null);
+                alert.setContentText("Item Successfully Deleted!");
+                alert.show();
+            } else {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Delete Stock");
+                alert.setHeaderText(null);
+                alert.setContentText("Deletion Failed! \n Item Not Found!");
+                alert.show();
+            }
         }
 
     }
 
     @FXML
     private void doReturnStock() throws SQLException, ClassNotFoundException {
-        int result = Stock.returnStock(Integer.parseInt(returnQty.getText()), returnCode.getText());
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Return Stock");
         alert.setHeaderText(null);
 
-        if (result == 1) {
-            alert.setContentText("Operation Successful!");
+        String code = returnCode.getText();
+        String qty = returnQty.getText();
+        code = code.trim();
+        qty = qty.trim();
+
+        if (code.isEmpty() && qty.isEmpty()) {
+            alert.setContentText("Fields are empty!");
+        }
+        else if(code.isEmpty()) {
+            alert.setContentText("Item Code cannot be empty!");
+        } else if (qty.isEmpty()) {
+            alert.setContentText("Quantity field is empty!");
         } else {
-            alert.setContentText("Operation Failed");
+            int result = Stock.returnStock(Integer.parseInt(returnQty.getText()), returnCode.getText());
+
+
+            if (result == 1) {
+                alert.setContentText("Operation Successful!");
+            } else {
+                alert.setContentText("Operation Failed");
+            }
+
         }
 
         alert.show();
@@ -82,32 +111,46 @@ public class StockViewController {
     @FXML
     private void doUpdateDetail() throws SQLException, ClassNotFoundException {
         int result;
-
-        if (updateName.getText().trim().equals("") && updatePrice.getText().trim().equals("")) {
-            result = Stock.updateStock(updateCode.getText(),Integer.parseInt(updateROL.getText()));
-        } else if (updateROL.getText().trim().equals("") && updatePrice.getText().trim().equals("") ) {
-            result = Stock.updateStock(updateName.getText(),updateCode.getText());
-        } else if (updateROL.getText().trim().equals("") && updateName.getText().trim().equals("") ) {
-            result = Stock.updateStock(updateCode.getText(), new BigDecimal(updatePrice.getText()));
-        } else if (updateName.getText().trim().equals("")) {
-            result = Stock.updateStock(updateCode.getText(),Integer.parseInt(updateROL.getText()),new BigDecimal(updatePrice.getText()));
-        } else if (updateROL.getText().trim().equals("")) {
-            result = Stock.updateStock(updateName.getText(),updateCode.getText(),new BigDecimal(updatePrice.getText()));
-        } else if (updatePrice.getText().trim().equals("")) {
-            result = Stock.updateStock(updateName.getText(),Integer.parseInt(updateROL.getText()));
-        }
-        else {
-            result = Stock.updateStock(updateName.getText(),updateCode.getText(),Integer.parseInt(updateROL.getText()));
-        }
+        String code = updateCode.getText().trim();
+        String price = updatePrice.getText().trim();
+        String name = updateName.getText().trim();
+        String rol = updateROL.getText().trim();
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Return Stock");
         alert.setHeaderText(null);
 
-        if (result == 1) {
-            alert.setContentText("Operation Successful!");
+        if (code.isEmpty() && price.isEmpty() && name.isEmpty() && rol.isEmpty()) {
+            alert.setContentText("All Fields cannot be empty");
+        } else if (price.isEmpty() && name.isEmpty() && rol.isEmpty() && !code.isEmpty()) {
+            alert.setContentText("You have to enter atleast one field to update details!");
+        } else if (code.isEmpty()) {
+            alert.setContentText("Item Code cannot be empty!");
         } else {
-            alert.setContentText("Operation Failed");
+
+            if (updateName.getText().trim().equals("") && updatePrice.getText().trim().equals("")) {
+                result = Stock.updateStock(updateCode.getText(), Integer.parseInt(updateROL.getText()));
+            } else if (updateROL.getText().trim().equals("") && updatePrice.getText().trim().equals("")) {
+                result = Stock.updateStock(updateName.getText(), updateCode.getText());
+            } else if (updateROL.getText().trim().equals("") && updateName.getText().trim().equals("")) {
+                result = Stock.updateStock(updateCode.getText(), new BigDecimal(updatePrice.getText()));
+            } else if (updateName.getText().trim().equals("")) {
+                result = Stock.updateStock(updateCode.getText(), Integer.parseInt(updateROL.getText()), new BigDecimal(updatePrice.getText()));
+            } else if (updateROL.getText().trim().equals("")) {
+                result = Stock.updateStock(updateName.getText(), updateCode.getText(), new BigDecimal(updatePrice.getText()));
+            } else if (updatePrice.getText().trim().equals("")) {
+                result = Stock.updateStock(updateName.getText(), Integer.parseInt(updateROL.getText()));
+            } else {
+                result = Stock.updateStock(updateName.getText(), updateCode.getText(), Integer.parseInt(updateROL.getText()));
+            }
+
+
+            if (result == 1) {
+                alert.setContentText("Operation Successful!");
+            } else {
+                alert.setContentText("Operation Failed");
+            }
+
         }
 
         alert.show();
