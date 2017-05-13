@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -43,7 +44,7 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(Main.class.getResource("view/MainView.fxml"));
         mainLayout = loader.load();
-        Scene scene = new Scene(mainLayout, 800, 600);
+        Scene scene = new Scene(mainLayout,1000,700);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -51,8 +52,13 @@ public class Main extends Application {
     public static void showMainItems() throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(Main.class.getResource("view/MainItems.fxml"));
-        BorderPane mainItem = loader.load();
-        mainLayout.setCenter(mainItem);
+        Pane mainItem = loader.load();
+        mainLayout.setLeft(mainItem);
+
+        FXMLLoader searchViewLoader = new FXMLLoader();
+        searchViewLoader.setLocation(Main.class.getResource("view/SearchView.fxml"));
+        Pane searchItem = searchViewLoader.load();
+        mainLayout.setCenter(searchItem);
     }
 
     public static void showStock() throws IOException {
@@ -82,14 +88,14 @@ public class Main extends Application {
         loader.setLocation(Main.class.getResource("supplier/SupplierDetailView.fxml"));
         BorderPane supplierDetail = loader.load();
 
-        Stage suuplierDetailStage = new Stage();
-        suuplierDetailStage.setTitle("Supplier Details");
-        suuplierDetailStage.initModality(Modality.WINDOW_MODAL);
-        suuplierDetailStage.initOwner(primaryStage);
+        Stage supplierDetailStage = new Stage();
+        supplierDetailStage.setTitle("Supplier Details");
+        supplierDetailStage.initModality(Modality.WINDOW_MODAL);
+        supplierDetailStage.initOwner(primaryStage);
 
         Scene scene = new Scene(supplierDetail);
-        suuplierDetailStage.setScene(scene);
-        suuplierDetailStage.showAndWait();
+        supplierDetailStage.setScene(scene);
+        supplierDetailStage.showAndWait();
     }
 
     public static void showPurchase() throws IOException {
@@ -114,5 +120,8 @@ public class Main extends Application {
             mainLayout.setCenter(supplierPane);
         }
     }
+
+
+
 
 
