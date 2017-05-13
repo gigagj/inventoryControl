@@ -70,4 +70,29 @@ public class Main extends Application {
         stockDetailStage.setScene(scene);
         stockDetailStage.showAndWait();
     }
-}
+
+    public static void showSupplierDetailsStage() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(Main.class.getResource("supplier/SupplierDetailView.fxml"));
+        BorderPane supplierDetail = loader.load();
+
+        Stage suuplierDetailStage = new Stage();
+        suuplierDetailStage.setTitle("Supplier Details");
+        suuplierDetailStage.initModality(Modality.WINDOW_MODAL);
+        suuplierDetailStage.initOwner(primaryStage);
+
+        Scene scene = new Scene(supplierDetail);
+        suuplierDetailStage.setScene(scene);
+        suuplierDetailStage.showAndWait();
+    }
+
+    public static void showSupplier() throws IOException {
+
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("supplier/SupplierView.fxml"));
+            GridPane supplierPane = loader.load();
+            mainLayout.setCenter(supplierPane);
+        }
+    }
+
+
