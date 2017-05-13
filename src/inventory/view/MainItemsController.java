@@ -17,4 +17,9 @@ public class MainItemsController {
         main.showStock();
 
     }
+    @FXML
+    private void openSupplier() throws IOException {
+        main.showSupplier();
+
+    }
 }
