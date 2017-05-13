@@ -44,7 +44,7 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(Main.class.getResource("view/MainView.fxml"));
         mainLayout = loader.load();
-        Scene scene = new Scene(mainLayout,1000,700);
+        Scene scene = new Scene(mainLayout, 1000, 700);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -111,15 +111,24 @@ public class Main extends Application {
     }
 
 
-
     public static void showSupplier() throws IOException {
 
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("supplier/SupplierView.fxml"));
-            GridPane supplierPane = loader.load();
-            mainLayout.setCenter(supplierPane);
-        }
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(Main.class.getResource("supplier/SupplierView.fxml"));
+        GridPane supplierPane = loader.load();
+        mainLayout.setCenter(supplierPane);
     }
+
+    public static void showSales() throws IOException {
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(Main.class.getResource("sales/SalesView.fxml"));
+        BorderPane supplierPane = loader.load();
+        mainLayout.setCenter(supplierPane);
+    }
+}
+
+
 
 
 

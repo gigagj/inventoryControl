@@ -7,24 +7,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="inventory.view.MainItemsController">
-   <center>
-      <FlowPane hgap="20.0" prefHeight="200.0" prefWidth="200.0" vgap="20.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button mnemonicParsing="false" onAction="#openStock" prefHeight="120.0" prefWidth="120.0" text="STOCKS">
-               <FlowPane.margin>
-                  <Insets left="20.0" />
-               </FlowPane.margin>
-            </Button>
-            <Button mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" text="SALES">
-               <FlowPane.margin>
-                  <Insets />
-               </FlowPane.margin>
-            </Button>
-         </children>
-         <padding>
-            <Insets top="10.0" />
-         </padding>
-      </FlowPane>
-   </center>
-</BorderPane>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="inventory.view.MainItemsController">
+   <children>
+      <Button layoutX="34.0" layoutY="170.0" mnemonicParsing="false" onAction="#openStock" prefHeight="48.0" prefWidth="233.0" text="Stock" />
+      <Button layoutX="34.0" layoutY="103.0" mnemonicParsing="false" onAction="#openPurchase" prefHeight="48.0" prefWidth="233.0" text="Purchase" />
+      <Button layoutX="34.0" layoutY="36.0" mnemonicParsing="false" onAction="#openSupplier" prefHeight="48.0" prefWidth="233.0" text="Supplier" />
+      <Button layoutX="34.0" layoutY="237.0" mnemonicParsing="false" onAction="#openSales" prefHeight="48.0" prefWidth="233.0" text="Sales" />
+   </children>
+</Pane>

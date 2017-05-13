@@ -13,7 +13,7 @@ public class SalesDetails {
         private int quantity;
 
 
-        SalesDetails(String itemCode, String nic, int quantity, String date) {
+        public SalesDetails(String itemCode, String nic, int quantity, String date) {
             this.itemCode = itemCode;
             this.nic= nic;
             this.date = date;

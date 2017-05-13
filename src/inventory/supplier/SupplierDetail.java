@@ -12,7 +12,7 @@ public class SupplierDetail {
     private int contactNumber;
 
 
-     SupplierDetail(String supplierID, String name, String address, int contactNumber) {
+     public SupplierDetail(String supplierID, String name, String address, int contactNumber) {
         this.supplierID = supplierID;
         this.name = name;
         this.address = address;

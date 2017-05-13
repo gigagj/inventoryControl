@@ -140,7 +140,7 @@ public class PurchaseViewController implements Initializable {
             }
             catch (NumberFormatException e1) {
                 alert2.setContentText(e1.getMessage()+"\nQuantity should be of type Integer");
-
+                alert2.show();
             }
 
             if (result == 1) {
@@ -151,7 +151,7 @@ public class PurchaseViewController implements Initializable {
         }
 
         alert.show();
-        alert2.show();
+
         addCode.clear();
         addSup.clear();
         addDate.setValue(null);
