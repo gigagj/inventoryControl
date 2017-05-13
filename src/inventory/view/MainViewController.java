@@ -15,4 +15,9 @@ public class MainViewController {
     private void goHome() throws IOException {
         main.showMainItems();
     }
+
+    @FXML
+    private void doLogout() {
+        main.logout();
+    }
 }
