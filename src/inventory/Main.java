@@ -4,9 +4,9 @@ package inventory;
  */
 
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
@@ -17,6 +17,8 @@ import java.io.IOException;
 public class Main extends Application {
     private static Stage primaryStage;
     private static BorderPane mainLayout;
+    private static Stage stage;
+    private static AnchorPane layout;
 
     public static void main(String[] args) {
         launch(args);
@@ -26,20 +28,24 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws IOException {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Inventory Control System");
-        showMainView();
-        showMainItems();
 
+        FXMLLoader root = new FXMLLoader();
+        root.setLocation(Main.class.getResource("view/Login.fxml"));
+        layout = root.load();
+        Scene scene = new Scene(layout);
+        stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("Login");
+        stage.show();
     }
 
-    private void showMainView() throws IOException {
+    public static void showMainView() throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(Main.class.getResource("view/MainView.fxml"));
         mainLayout = loader.load();
         Scene scene = new Scene(mainLayout,800,600);
         primaryStage.setScene(scene);
         primaryStage.show();
-
-
     }
 
     public static void showMainItems() throws IOException {
@@ -85,6 +91,20 @@ public class Main extends Application {
         suuplierDetailStage.setScene(scene);
         suuplierDetailStage.showAndWait();
     }
+
+    public static void showPurchase() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(Main.class.getResource("purchase/PurchaseView.fxml"));
+        BorderPane purchasePane = loader.load();
+        mainLayout.setCenter(purchasePane);
+    }
+
+    public static void logout() {
+        primaryStage.hide();
+        stage.show();
+    }
+
+}
 
     public static void showSupplier() throws IOException {
 

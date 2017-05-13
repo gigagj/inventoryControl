@@ -16,6 +16,11 @@
                   <Insets left="5.0" top="5.0" />
                </HBox.margin>
             </Button>
+            <Button mnemonicParsing="false" onAction="#doLogout" prefWidth="100.0" text="Log out" textAlignment="CENTER">
+               <HBox.margin>
+                  <Insets left="5.0" top="5.0" />
+               </HBox.margin>
+            </Button>
          </children>
       </HBox>
    </bottom>
