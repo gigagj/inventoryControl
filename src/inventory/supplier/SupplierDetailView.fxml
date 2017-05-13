@@ -12,7 +12,7 @@
         <columns>
           <TableColumn fx:id="supID" prefWidth="75.0" text="Supplier ID" />
           <TableColumn fx:id="supName" prefWidth="109.0" text="Supplier Name" />
-            <TableColumn fx:id="supAdd" prefWidth="127.0" text="Supplier Address" />
+            <TableColumn fx:id="supAdd" prefWidth="267.0" text="Supplier Address" />
             <TableColumn fx:id="supCont" prefWidth="139.0" text="Supplier Contact#" />
         </columns>
       </TableView>

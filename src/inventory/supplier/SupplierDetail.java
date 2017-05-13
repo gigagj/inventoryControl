@@ -32,11 +32,11 @@ public class SupplierDetail {
 
     public void setName(String name) { this.name = name; }
 
-    public String getaddress() {
+    public String getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddressddress(String address) {
         this.address = address;
     }
 

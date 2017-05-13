@@ -37,7 +37,7 @@ public class Supplier {
         DbConnection.openConnection();
         Connection con = DbConnection.getConnection();
 
-        PreparedStatement stmt=con.prepareStatement("Delete from Supplier where supplierCode=?");
+        PreparedStatement stmt=con.prepareStatement("Delete from Supplier where supplierId=?");
         stmt.setString(1,supplierID);
 
         int result=stmt.executeUpdate();
@@ -47,18 +47,22 @@ public class Supplier {
         return result;
     }
 
-    public static int addSupplier( String supplierID,String name, String address, int contactNumber) throws SQLException, ClassNotFoundException{
+    public static int addSupplier( String supplierId,String name, String address, int contactNumber) throws SQLException, ClassNotFoundException{
         DbConnection.openConnection();
         Connection con = DbConnection.getConnection();
 
         PreparedStatement stmt=con.prepareStatement("insert into Supplier values(?,?,?,?)");
-        stmt.setString(1,supplierID);
+        stmt.setString(1,supplierId);
         stmt.setString(2,name);
         stmt.setString(3,address);
         stmt.setInt(4,contactNumber);
 
-
-        int result=stmt.executeUpdate();
+        /*System.out.println(supplierId);
+        System.out.println(name);
+        System.out.println(address);
+        System.out.println(contactNumber);*/
+        int result =0;
+        result = stmt.executeUpdate();
         System.out.println(result);
 
         DbConnection.closeConnection();
