@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -11,7 +12,10 @@
    <children>
       <Button layoutX="34.0" layoutY="170.0" mnemonicParsing="false" onAction="#openStock" prefHeight="48.0" prefWidth="233.0" text="Stock" />
       <Button layoutX="34.0" layoutY="103.0" mnemonicParsing="false" onAction="#openPurchase" prefHeight="48.0" prefWidth="233.0" text="Purchase" />
-      <Button layoutX="34.0" layoutY="36.0" mnemonicParsing="false" onAction="#openSupplier" prefHeight="48.0" prefWidth="233.0" text="Supplier" />
+      <Button layoutX="34.0" layoutY="36.0" mnemonicParsing="false" onAction="#openSupplier" prefHeight="48.0" prefWidth="233.0" text="Supplier" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
       <Button layoutX="34.0" layoutY="237.0" mnemonicParsing="false" onAction="#openSales" prefHeight="48.0" prefWidth="233.0" text="Sales" />
    </children>
 </Pane>
