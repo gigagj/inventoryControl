@@ -14,7 +14,7 @@
                <content>
                   <VBox fillWidth="false" spacing="10.0">
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="42.0" prefWidth="300.0" text="Add Purchase Details" textAlignment="CENTER">
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="42.0" prefWidth="300.0" text="ADD PURCHASE DETAILS" textAlignment="CENTER">
                            <font>
                               <Font name="System Bold" size="20.0" />
                            </font>
@@ -36,7 +36,7 @@
                               <Insets />
                            </VBox.margin>
                         </TextField>
-                        <DatePicker fx:id="addDate" prefHeight="40.0" prefWidth="300.0">
+                        <DatePicker fx:id="addDate" prefHeight="40.0" prefWidth="300.0" promptText="                              PURCHASE DATE">
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>
@@ -61,7 +61,61 @@
                   </VBox>
                </content>
             </Tab>
-            <Tab text="View Purchase">
+            <Tab text="Add Stock">
+               <content>
+                  <VBox fillWidth="false" spacing="10.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="300.0" text="ADD STOCK DETAILS" textAlignment="CENTER">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Separator prefWidth="300.0">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Separator>
+                        <TextField fx:id="stockCode" alignment="CENTER" prefHeight="40.0" prefWidth="300.0" promptText="ITEM CODE">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="stockName" alignment="CENTER" prefHeight="40.0" prefWidth="300.0" promptText="NAME">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="stockQty" alignment="CENTER" prefHeight="40.0" prefWidth="300.0" promptText="QUANTITY">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="stockROL" alignment="CENTER" prefHeight="40.0" prefWidth="300.0" promptText="REORDER LEVEL">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="stockPrice" alignment="CENTER" prefHeight="40.0" prefWidth="300.0" promptText="PRICE">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </TextField>
+                        <Button mnemonicParsing="false" onAction="#doAddStock" prefHeight="40.0" prefWidth="300.0" text="Add Stock">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets left="230.0" top="70.0" />
+                     </padding>
+                  </VBox>
+               </content>
+            </Tab>
+            <Tab text="View All Purchases">
                <content>
                   <TableView fx:id="purTable">
                      <columns>
@@ -72,11 +126,6 @@
                      </columns>
                   </TableView>
                </content>
-            </Tab>
-            <Tab text="Add Stock">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-              </content>
             </Tab>
          </tabs>
       </TabPane>
