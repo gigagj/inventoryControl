@@ -47,7 +47,7 @@ public class SalesViewController implements Initializable {
         itemCodeCol.setCellValueFactory(new PropertyValueFactory<SalesDetails,String>("itemCode"));
         cusNic.setCellValueFactory(new PropertyValueFactory<SalesDetails,String>("nic"));
         quant.setCellValueFactory(new PropertyValueFactory<SalesDetails,Integer>("quantity"));
-        coldate.setCellValueFactory(new PropertyValueFactory<SalesDetails,Integer>("date"));
+        coldate.setCellValueFactory(new PropertyValueFactory<SalesDetails,String>("date"));
 
 
 
@@ -60,19 +60,51 @@ public class SalesViewController implements Initializable {
 
     @FXML
     private void addNewSale() throws SQLException, ClassNotFoundException {
-        int result;
-        result = Sales.addSales(itemColumn.getText(),nicColumn.getText(),Integer.parseInt(quantity.getText()),date.getValue());
+        int result =0;
+        String checkItemColumn= itemColumn.getText();
+        String checkNicColumn= nicColumn.getText();
+        String checkQuantity =quantity.getText();
+
+
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Added new sales");
         alert.setHeaderText(null);
 
-        if (result == 1) {
-            alert.setContentText("Operation Successful!");
-              }
+        if (checkItemColumn.isEmpty() && checkNicColumn.isEmpty() && checkQuantity.isEmpty() && date.getValue() == null ) {
+            alert.setContentText("All Fields cannot be empty");
+        }
+        else if (checkItemColumn.isEmpty()|| checkNicColumn.isEmpty() || checkQuantity.isEmpty() || date.getValue() == null )  {
+            alert.setContentText("Any of the fields cannot be empty");
+
+        }
+
+
 
         else {
-            alert.setContentText("Operation Failed");
+            try {
+                result = Sales.addSales(itemColumn.getText(), nicColumn.getText(), Integer.parseInt(quantity.getText()), date.getValue());
+            }
+            catch(Exception e){
+                Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
+
+                alert2.setHeaderText("error");
+
+                alert2.setContentText("number should be entered for quantity");
+                alert2.show();
+            }
+            if (result == 1) {
+                alert.setContentText("Operation Succession");
+            } else {
+                alert.setContentText("Operation Failed");
+            }
+
+            try {
+                salesTbl.setItems(Sales.getSales());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
         }
 
         alert.show();
@@ -81,25 +113,7 @@ public class SalesViewController implements Initializable {
         quantity.clear();
         date.setValue(null);
 
-        try {
-            salesTbl.setItems(Sales.getSales());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     }
