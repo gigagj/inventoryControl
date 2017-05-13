@@ -27,7 +27,7 @@ public class Supplier {
             String address =rs.getString("address");
             int contactNumber=rs.getInt("contactNumber");
             supplier.add(new SupplierDetail(supplierCode,name,address,contactNumber));
-
+// creating objects and load it in
         }
         DbConnection.closeConnection();
         return supplier;
@@ -37,10 +37,10 @@ public class Supplier {
         DbConnection.openConnection();
         Connection con = DbConnection.getConnection();
 
-        PreparedStatement stmt=con.prepareStatement("Delete from Supplier where supplierId=?");
-        stmt.setString(1,supplierID);
+        PreparedStatement del=con.prepareStatement("Delete from Supplier where supplierId=?");
+        del.setString(1,supplierID);
 
-        int result=stmt.executeUpdate();
+        int result=del.executeUpdate();
         System.out.println(result);
 
         DbConnection.closeConnection();
@@ -51,18 +51,18 @@ public class Supplier {
         DbConnection.openConnection();
         Connection con = DbConnection.getConnection();
 
-        PreparedStatement stmt=con.prepareStatement("insert into Supplier values(?,?,?,?)");
-        stmt.setString(1,supplierId);
-        stmt.setString(2,name);
-        stmt.setString(3,address);
-        stmt.setInt(4,contactNumber);
+        PreparedStatement add=con.prepareStatement("insert into Supplier values(?,?,?,?)");
+        add.setString(1,supplierId);
+        add.setString(2,name);
+        add.setString(3,address);
+        add.setInt(4,contactNumber);
 
         /*System.out.println(supplierId);
         System.out.println(name);
         System.out.println(address);
         System.out.println(contactNumber);*/
         int result =0;
-        result = stmt.executeUpdate();
+        result = add.executeUpdate();
         System.out.println(result);
 
         DbConnection.closeConnection();
@@ -72,14 +72,14 @@ public class Supplier {
     public static int updateSupplier(String supplierID,String address,int contactNumber) throws IOException, ClassNotFoundException, SQLException {
         DbConnection.openConnection();
         Connection con = DbConnection.getConnection();
-        PreparedStatement stmt;
+        PreparedStatement up;
 
-        stmt = con.prepareStatement("update supplier set address = ?, contactNumber = ? where supplierID = ?");
-        stmt.setString(1, address);
-        stmt.setInt(2, contactNumber);
-        stmt.setString(3, supplierID);
+        up = con.prepareStatement("update supplier set address = ?, contactNumber = ? where supplierID = ?");
+        up.setString(1, address);
+        up.setInt(2, contactNumber);
+        up.setString(3, supplierID);
 
-        int result = stmt.executeUpdate();
+        int result = up.executeUpdate();
 
         DbConnection.closeConnection();
         return result;
@@ -88,13 +88,13 @@ public class Supplier {
     public static int updateSupplier(String supplierID,String address) throws IOException, ClassNotFoundException, SQLException {
         DbConnection.openConnection();
         Connection con = DbConnection.getConnection();
-        PreparedStatement stmt;
+        PreparedStatement up;
 
-        stmt = con.prepareStatement("update supplier set address = ? where supplierID = ?");
-        stmt.setString(1, address);
-        stmt.setString(2, supplierID);
+        up = con.prepareStatement("update supplier set address = ? where supplierID = ?");
+        up.setString(1, address);
+        up.setString(2, supplierID);
 
-        int result = stmt.executeUpdate();
+        int result = up.executeUpdate();
 
         DbConnection.closeConnection();
         return result;
@@ -104,13 +104,13 @@ public class Supplier {
     public static int updateSupplier(String supplierID,int contactNumber) throws IOException, ClassNotFoundException, SQLException {
         DbConnection.openConnection();
         Connection con = DbConnection.getConnection();
-        PreparedStatement stmt;
+        PreparedStatement up;
 
-        stmt = con.prepareStatement("update supplier set contactNumber = ? where supplierID = ?");
-        stmt.setInt(1,contactNumber);
-        stmt.setString(2, supplierID);
+        up = con.prepareStatement("update supplier set contactNumber = ? where supplierID = ?");
+        up.setInt(1,contactNumber);
+        up.setString(2, supplierID);
 
-        int result = stmt.executeUpdate();
+        int result = up.executeUpdate();
 
         DbConnection.closeConnection();
         return result;
