@@ -70,8 +70,6 @@ public class LoginController  {
                 alert.setContentText("Unable to login ! \n  Invalid credentials");
                 alert.show();
             }
-        }
-    }
-
-
+        }     userName.clear();               password.clear();
+}
 }

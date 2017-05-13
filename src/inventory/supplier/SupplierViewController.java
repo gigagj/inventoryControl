@@ -62,6 +62,7 @@ public class SupplierViewController {
         else {
             int result =0;
                     result= Supplier.deleteSupplier(supCode.getText());
+
             supCode.clear();
             if (result == 1) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
