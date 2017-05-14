@@ -4,15 +4,19 @@ package inventory.stock;
  * Created by gigar on 30-Apr-17.
  */
 
+import inventory.DbConnection;
 import inventory.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.TextField;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.view.JasperViewer;
 
 import javax.xml.soap.Text;
 import java.awt.*;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.sql.Connection;
 import java.sql.SQLException;
 
 public class StockViewController {
@@ -34,6 +38,17 @@ public class StockViewController {
     private TextField updateROL;
     @FXML
     private TextField updatePrice;
+
+    @FXML
+    private void showReport() throws JRException, SQLException, ClassNotFoundException {
+        DbConnection.openConnection();
+        Connection con = DbConnection.getConnection();
+        String report = "C:\\Users\\gigar\\IdeaProjects\\inventoryControl\\src\\inventory\\stock\\allstock.jrxml";
+        JasperReport jr = JasperCompileManager.compileReport(report);
+        JasperPrint jp = JasperFillManager.fillReport(jr,null,con);
+        JasperViewer.viewReport(jp);
+        DbConnection.closeConnection();
+    }
 
     @FXML
     private void goStockDetails() throws IOException {
@@ -108,6 +123,8 @@ public class StockViewController {
         returnQty.clear();
     }
 
+
+
     @FXML
     private void doUpdateDetail() throws SQLException, ClassNotFoundException {
         int result;
@@ -159,5 +176,4 @@ public class StockViewController {
         updateCode.clear();
         updatePrice.clear();
     }
-
 }
