@@ -46,7 +46,7 @@ public class StockViewController {
         String report = "C:\\Users\\gigar\\IdeaProjects\\inventoryControl\\src\\inventory\\stock\\allstock.jrxml";
         JasperReport jr = JasperCompileManager.compileReport(report);
         JasperPrint jp = JasperFillManager.fillReport(jr,null,con);
-        JasperViewer.viewReport(jp);
+        JasperViewer.viewReport(jp,false);
         DbConnection.closeConnection();
     }
 

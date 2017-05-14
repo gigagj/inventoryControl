@@ -1,4 +1,5 @@
 package inventory.purchase;
+import inventory.DbConnection;
 import inventory.stock.Stock;
 import inventory.Main;
 import inventory.purchase.Purchase;
@@ -6,10 +7,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URL;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
@@ -67,6 +71,16 @@ public class PurchaseViewController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    @FXML
+    private void showReportPurchase() throws JRException, SQLException, ClassNotFoundException {
+        DbConnection.openConnection();
+        Connection con = DbConnection.getConnection();
+        String report = "C:\\Users\\gigar\\IdeaProjects\\inventoryControl\\src\\inventory\\purchase\\allpurchase.jrxml";
+        JasperReport jr = JasperCompileManager.compileReport(report);
+        JasperPrint jp = JasperFillManager.fillReport(jr,null,con);
+        JasperViewer.viewReport(jp,false);
+        DbConnection.closeConnection();
     }
 
     @FXML

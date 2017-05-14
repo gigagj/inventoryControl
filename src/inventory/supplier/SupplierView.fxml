@@ -8,14 +8,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="inventory.supplier.SupplierViewController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="inventory.supplier.SupplierViewController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="600.0" minWidth="10.0" prefWidth="300.0" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="467.0" minWidth="0.0" prefWidth="300.0" />
   </columnConstraints>
   <rowConstraints>
-    <RowConstraints maxHeight="209.0" minHeight="10.0" prefHeight="145.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="279.0" minHeight="10.0" prefHeight="255.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="209.0" minHeight="10.0" prefHeight="150.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="338.0" minHeight="10.0" prefHeight="338.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
       <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#goSupplierDetails" prefHeight="100.0" prefWidth="182.0" text="Supplier Details" textAlignment="JUSTIFY">
@@ -70,6 +70,11 @@
                </font>
                <VBox.margin>
                   <Insets left="55.0" />
+               </VBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#showReportSupplier" prefHeight="33.0" prefWidth="162.0" text="iReport">
+               <VBox.margin>
+                  <Insets left="60.0" top="30.0" />
                </VBox.margin>
             </Button>
          </children>

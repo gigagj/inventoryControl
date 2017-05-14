@@ -1,12 +1,16 @@
 package inventory.supplier;
 
+import inventory.DbConnection;
 import inventory.Main;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.SQLException;
 
 /**
@@ -45,6 +49,17 @@ public class SupplierViewController {
     private void goSupplierDetails() throws IOException, SQLException, ClassNotFoundException {
        main.showSupplierDetailsStage();
 
+    }
+
+    @FXML
+    private void showReportSupplier() throws JRException, SQLException, ClassNotFoundException {
+        DbConnection.openConnection();
+        Connection con = DbConnection.getConnection();
+        String report = "C:\\Users\\gigar\\IdeaProjects\\inventoryControl\\src\\inventory\\supplier\\allsuppliers.jrxml";
+        JasperReport jr = JasperCompileManager.compileReport(report);
+        JasperPrint jp = JasperFillManager.fillReport(jr,null,con);
+        JasperViewer.viewReport(jp,false);
+        DbConnection.closeConnection();
     }
 
     @FXML

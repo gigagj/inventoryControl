@@ -93,13 +93,13 @@ public class SalesViewController implements Initializable {
     }
 
     @FXML
-    private void showReport() throws JRException, SQLException, ClassNotFoundException {
+    private void showReportSales() throws JRException, SQLException, ClassNotFoundException {
         DbConnection.openConnection();
         Connection con = DbConnection.getConnection();
         String report = "C:\\Users\\gigar\\IdeaProjects\\inventoryControl\\src\\inventory\\sales\\allsales.jrxml";
         JasperReport jr = JasperCompileManager.compileReport(report);
         JasperPrint jp = JasperFillManager.fillReport(jr,null,con);
-        JasperViewer.viewReport(jp);
+        JasperViewer.viewReport(jp,false);
         DbConnection.closeConnection();
     }
 
