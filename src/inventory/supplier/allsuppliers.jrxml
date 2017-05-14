@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="allsuppliers" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1646af81-6689-47db-8f8e-8e7115d84422">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     supplier."supplierId" AS supplier_supplierId,
+     supplier."name" AS supplier_name,
+     supplier."address" AS supplier_address
+FROM
+     "dbo"."supplier" supplier]]>
+	</queryString>
+	<field name="supplier_supplierId" class="java.lang.String"/>
+	<field name="supplier_name" class="java.lang.String"/>
+	<field name="supplier_address" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="136" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="103b9f3d-3347-42b7-b1f1-c9421414a887" style="Title" x="85" y="27" width="396" height="62"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Supplier Details]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement uuid="4fb8b35d-f269-4908-8c13-079d5cdce542" positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement uuid="0a9a95eb-5ceb-442a-beb6-9a868c2d57b7" style="Column header" x="0" y="0" width="185" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[supplier_supplierId]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0850231d-b184-480e-8b71-1bbeaee2ed2a" style="Column header" x="185" y="0" width="185" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[supplier_name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="36d7c0f6-3ae9-49e9-aed9-a2a3044c3144" style="Column header" x="370" y="0" width="185" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[supplier_address]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement uuid="953e2d37-1927-40c4-b72d-367776f49f78" style="Row" mode="Opaque" x="0" y="0" width="555" height="15"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="fcb86824-9df9-4307-9d56-f1780fe8508d" style="Detail" x="0" y="0" width="185" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{supplier_supplierId}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="513f23b7-fa72-4751-a0e9-91cc47ea76ca" style="Detail" x="185" y="0" width="185" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{supplier_name}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="d84eee51-1797-43b7-a639-e8aac62bde5d" style="Detail" x="370" y="0" width="185" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{supplier_address}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement uuid="8d91c362-9451-4f84-b269-8680afc6e8b2" positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement uuid="dfeede87-af33-48b7-8a83-a38592c1b16c" mode="Opaque" x="-21" y="1" width="597" height="24" forecolor="#D0B48E" backcolor="#F2EBDF"/>
+				<textField evaluationTime="Report">
+					<reportElement uuid="a42a6ca1-6d8c-4b36-927b-198556642765" style="Column header" x="533" y="0" width="40" height="20" forecolor="#736343"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="045bbace-5cf6-45fe-8c56-f506075d29c8" style="Column header" x="453" y="0" width="80" height="20" forecolor="#736343"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement uuid="4204e43c-21ad-4175-bb05-07197eab51e8" style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
