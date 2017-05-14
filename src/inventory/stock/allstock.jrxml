@@ -33,7 +33,6 @@ FROM
 	</background>
 	<title>
 		<band height="132" splitType="Stretch">
-
 			<frame>
 				<reportElement uuid="456e42c5-67b7-47cb-9fbe-0d402068c2cb" mode="Opaque" x="0" y="0" width="451" height="95" backcolor="#000000"/>
 				<staticText>
@@ -69,14 +68,14 @@ FROM
 				<text><![CDATA[stock_itemCode]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9927cb1b-22c8-4093-9e67-c7be7163a84a" style="Column header" x="111" y="7" width="111" height="18" forecolor="#000000"/>
+				<reportElement uuid="9927cb1b-22c8-4093-9e67-c7be7163a84a" style="Column header" x="111" y="7" width="128" height="18" forecolor="#000000"/>
 				<textElement>
 					<font isBold="false"/>
 				</textElement>
 				<text><![CDATA[stock_name]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="aaf7adde-9956-40b8-9223-dabf485da0f2" style="Column header" x="222" y="7" width="111" height="18" forecolor="#000000"/>
+				<reportElement uuid="aaf7adde-9956-40b8-9223-dabf485da0f2" style="Column header" x="239" y="7" width="94" height="18" forecolor="#000000"/>
 				<textElement>
 					<font isBold="false"/>
 				</textElement>
@@ -110,14 +109,14 @@ FROM
 					<textFieldExpression><![CDATA[$F{stock_itemCode}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement uuid="762c08d8-b041-45ac-8638-99e7edd50a0b" style="Detail" positionType="Float" x="111" y="0" width="111" height="18"/>
+					<reportElement uuid="762c08d8-b041-45ac-8638-99e7edd50a0b" style="Detail" positionType="Float" x="111" y="0" width="128" height="18"/>
 					<textElement>
 						<font size="14"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{stock_name}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement uuid="fb395c7c-a4e1-453c-b2c4-1e13f4e3db43" style="Detail" positionType="Float" x="222" y="0" width="111" height="18"/>
+					<reportElement uuid="fb395c7c-a4e1-453c-b2c4-1e13f4e3db43" style="Detail" positionType="Float" x="239" y="0" width="94" height="18"/>
 					<textElement>
 						<font size="14"/>
 					</textElement>

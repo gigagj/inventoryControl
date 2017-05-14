@@ -80,7 +80,10 @@
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#showReport" prefHeight="25.0" prefWidth="199.0" text="iReport" />
+            <Button mnemonicParsing="false" onAction="#showReport" prefHeight="25.0" prefWidth="199.0" text="iReport">
+               <VBox.margin>
+                  <Insets left="20.0" top="40.0" />
+               </VBox.margin></Button>
          </children>
       </VBox>
       <VBox fillWidth="false" prefHeight="213.0" prefWidth="344.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">

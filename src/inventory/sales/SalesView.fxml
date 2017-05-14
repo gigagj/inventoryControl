@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
@@ -40,4 +41,10 @@
         </tabs>
       </TabPane>
    </center>
+   <bottom>
+      <Button mnemonicParsing="false" onAction="#showReport" text="iReport" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </BorderPane.margin></Button>
+   </bottom>
 </BorderPane>

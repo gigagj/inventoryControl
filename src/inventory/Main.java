@@ -44,7 +44,7 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(Main.class.getResource("view/MainView.fxml"));
         mainLayout = loader.load();
-        Scene scene = new Scene(mainLayout, 1000, 700);
+        Scene scene = new Scene(mainLayout, 1000, 500);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -56,7 +56,7 @@ public class Main extends Application {
         mainLayout.setLeft(mainItem);
 
         FXMLLoader searchViewLoader = new FXMLLoader();
-        searchViewLoader.setLocation(Main.class.getResource("view/SearchView.fxml"));
+        searchViewLoader.setLocation(Main.class.getResource("supplier/SupplierView.fxml"));
         Pane searchItem = searchViewLoader.load();
         mainLayout.setCenter(searchItem);
     }
