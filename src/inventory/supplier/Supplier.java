@@ -3,6 +3,7 @@ package inventory.supplier;
 import inventory.DbConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
 
 import java.io.IOException;
 import java.sql.*;
@@ -34,14 +35,24 @@ public class Supplier {
     }
 
     public static int deleteSupplier(String supplierID) throws SQLException, ClassNotFoundException{
+        int result = -1;
+        Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
         DbConnection.openConnection();
         Connection con = DbConnection.getConnection();
 
         PreparedStatement del=con.prepareStatement("Delete from Supplier where supplierId=?");
         del.setString(1,supplierID);
 
-        int result=del.executeUpdate();
-        System.out.println(result);
+        try {
+            result = del.executeUpdate();
+        } catch (Exception e) {
+            alert2.setTitle("Error");
+            alert2.setHeaderText(null);
+            alert2.setContentText(e.getMessage());
+            alert2.show();
+        }
+
+
 
         DbConnection.closeConnection();
         return result;

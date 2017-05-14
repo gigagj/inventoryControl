@@ -76,7 +76,7 @@ public class PurchaseViewController implements Initializable {
     private void showReportPurchase() throws JRException, SQLException, ClassNotFoundException {
         DbConnection.openConnection();
         Connection con = DbConnection.getConnection();
-        String report = "C:\\Users\\gigar\\IdeaProjects\\inventoryControl\\src\\inventory\\purchase\\allpurchase.jrxml";
+        String report = "C:\\Users\\Ranjitha\\IdeaProjects\\inventoryControl\\src\\inventory\\purchase\\allpurchase.jrxml";
         JasperReport jr = JasperCompileManager.compileReport(report);
         JasperPrint jp = JasperFillManager.fillReport(jr,null,con);
         JasperViewer.viewReport(jp,false);
@@ -156,10 +156,14 @@ public class PurchaseViewController implements Initializable {
                 alert2.setContentText(e1.getMessage()+"\nQuantity should be of type Integer");
                 alert2.show();
             }
+            catch (Exception e) {
+                alert2.setContentText(e.getMessage());
+                alert2.show();
+            }
 
             if (result == 1) {
                 alert.setContentText("Operation Successful!");
-            } else {
+            } else if(result==0){
                 alert.setContentText("Operation Failed");
             }
         }

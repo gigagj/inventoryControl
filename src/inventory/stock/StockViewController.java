@@ -43,7 +43,7 @@ public class StockViewController {
     private void showReport() throws JRException, SQLException, ClassNotFoundException {
         DbConnection.openConnection();
         Connection con = DbConnection.getConnection();
-        String report = "C:\\Users\\gigar\\IdeaProjects\\inventoryControl\\src\\inventory\\stock\\allstock.jrxml";
+        String report = "C:\\Users\\Ranjitha\\IdeaProjects\\inventoryControl\\src\\inventory\\stock\\allstock.jrxml";
         JasperReport jr = JasperCompileManager.compileReport(report);
         JasperPrint jp = JasperFillManager.fillReport(jr,null,con);
         JasperViewer.viewReport(jp,false);
@@ -76,7 +76,7 @@ public class StockViewController {
                 alert.setHeaderText(null);
                 alert.setContentText("Item Successfully Deleted!");
                 alert.show();
-            } else {
+            } else if (result==0){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Delete Stock");
                 alert.setHeaderText(null);

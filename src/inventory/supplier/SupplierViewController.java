@@ -55,7 +55,7 @@ public class SupplierViewController {
     private void showReportSupplier() throws JRException, SQLException, ClassNotFoundException {
         DbConnection.openConnection();
         Connection con = DbConnection.getConnection();
-        String report = "C:\\Users\\gigar\\IdeaProjects\\inventoryControl\\src\\inventory\\supplier\\allsuppliers.jrxml";
+        String report = "C:\\Users\\Ranjitha\\IdeaProjects\\inventoryControl\\src\\inventory\\supplier\\allsuppliers.jrxml";
         JasperReport jr = JasperCompileManager.compileReport(report);
         JasperPrint jp = JasperFillManager.fillReport(jr,null,con);
         JasperViewer.viewReport(jp,false);
@@ -85,7 +85,7 @@ public class SupplierViewController {
                 alert.setHeaderText(null);
                 alert.setContentText("Supplier Successfully Deleted!");
                 alert.show();
-            } else {
+            } else if (result==0){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Delete Supplier");
                 alert.setHeaderText(null);

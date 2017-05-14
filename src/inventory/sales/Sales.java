@@ -3,6 +3,7 @@ package inventory.sales;
 import inventory.DbConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -37,6 +38,8 @@ public class Sales {
             DbConnection.openConnection();
             Connection con = DbConnection.getConnection();
 
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+
             PreparedStatement stmt = con.prepareStatement("insert into sales values (?,?,?,?)");
             stmt.setString(1,itemCode);
             stmt.setString(2,nic);
@@ -44,8 +47,17 @@ public class Sales {
             stmt.setInt(4,quantity);
 
 
-            int result= stmt.executeUpdate();
-            System.out.println(result);
+            int result = -1;
+
+            try {
+                result = stmt.executeUpdate();
+            } catch (Exception e) {
+                alert.setTitle("Error");
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.show();
+            }
+
 
             DbConnection.closeConnection();
             return result;

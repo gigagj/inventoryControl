@@ -75,7 +75,7 @@ public class SalesViewController implements Initializable {
             alert.setContentText("Operation Successful!");
               }
 
-        else {
+        else if (result==0) {
             alert.setContentText("Operation Failed");
         }
 
@@ -96,23 +96,11 @@ public class SalesViewController implements Initializable {
     private void showReportSales() throws JRException, SQLException, ClassNotFoundException {
         DbConnection.openConnection();
         Connection con = DbConnection.getConnection();
-        String report = "C:\\Users\\gigar\\IdeaProjects\\inventoryControl\\src\\inventory\\sales\\allsales.jrxml";
+        String report = "C:\\Users\\Ranjitha\\IdeaProjects\\inventoryControl\\src\\inventory\\sales\\allsales.jrxml";
         JasperReport jr = JasperCompileManager.compileReport(report);
         JasperPrint jp = JasperFillManager.fillReport(jr,null,con);
         JasperViewer.viewReport(jp,false);
         DbConnection.closeConnection();
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
     }

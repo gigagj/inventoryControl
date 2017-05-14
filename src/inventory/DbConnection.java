@@ -29,4 +29,7 @@ public class DbConnection {
        return con;
     }
     public static void closeConnection() throws SQLException { con.close();}
+    public static void  main (String args[] )throws SQLException, ClassNotFoundException {
+        openConnection();
+    }
 }

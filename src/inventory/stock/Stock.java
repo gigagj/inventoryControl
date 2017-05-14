@@ -3,6 +3,7 @@ package inventory.stock;
 import inventory.DbConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
 
 import java.math.BigDecimal;
 import java.sql.*;
@@ -54,14 +55,22 @@ public class Stock {
     }
 
     public static int deleteStock(String itemCode) throws SQLException, ClassNotFoundException {
+       int result = -1;
+        Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
         DbConnection.openConnection();
         Connection con = DbConnection.getConnection();
 
         PreparedStatement stmt = con.prepareStatement("delete from stock where itemCode=?");
         stmt.setString(1,itemCode);
 
-        int result = stmt.executeUpdate();
-        System.out.println(result);
+        try {
+            result = stmt.executeUpdate();
+        } catch (Exception e) {
+            alert2.setTitle("Error");
+            alert2.setHeaderText(null);
+            alert2.setContentText(e.getMessage());
+            alert2.show();
+        }
 
         DbConnection.closeConnection();
         return result;

@@ -30,4 +30,6 @@ public class MainItemsController {
     private void openSales() throws IOException {
         main.showSales();
     }
+
+
 }

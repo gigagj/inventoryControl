@@ -32,7 +32,7 @@ public class Purchase {
         stmt2.setInt(1,quantity);
         stmt2.setString(2,itemCode);
 
-        int result = 0;
+        int result = -1;
 
         try {
              result = stmt.executeUpdate();
@@ -40,6 +40,7 @@ public class Purchase {
             alert.setTitle("Error");
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
+            alert.show();
         }
 
         int result2 = stmt2.executeUpdate();
